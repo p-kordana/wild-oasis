@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Secret, { loader as secretLoader } from "./utils/Secret";
 import styled from "styled-components";
+import GlobalStyles from "./styles/GlobalStyles";
 
 const H1 = styled.h1`
   font-size: 30px;
@@ -43,13 +44,16 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <StyledApp>
-      <H1>The Wild Oasis</H1>
-      <Button>Check in</Button>
-      <Button>Check out</Button>
-      <Input type="number" placeholder="Number of guests" />
-      <RouterProvider router={router} />
-    </StyledApp>
+    <>
+      <GlobalStyles />
+      <StyledApp>
+        <H1>The Wild Oasis</H1>
+        <Button>Check in</Button>
+        <Button>Check out</Button>
+        <Input type="number" placeholder="Number of guests" />
+        <RouterProvider router={router} />
+      </StyledApp>
+    </>
   );
 }
 
