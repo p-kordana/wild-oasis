@@ -14,6 +14,7 @@ import Settings from "./pages/Settings";
 import Account from "./pages/Account";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
+import AppLayout from "./ui/AppLayout";
 
 const StyledApp = styled.div`
   background-color: var(--color-brand-100);
@@ -21,13 +22,19 @@ const StyledApp = styled.div`
 `;
 
 const router = createBrowserRouter([
-  { path: "/", index: true, element: <Navigate replace to="dashboard" /> },
-  { path: "/dashboard", element: <Dashboard /> },
-  { path: "/bookings", element: <Bookings /> },
-  { path: "/cabins", element: <Cabins /> },
-  { path: "/users", element: <Users /> },
-  { path: "/settings", element: <Settings /> },
-  { path: "/account", element: <Account /> },
+  {
+    element: <AppLayout />,
+    children: [
+      { path: "/", index: true, element: <Navigate replace to="dashboard" /> },
+      { path: "/dashboard", element: <Dashboard /> },
+      { path: "/bookings", element: <Bookings /> },
+      { path: "/cabins", element: <Cabins /> },
+      { path: "/users", element: <Users /> },
+      { path: "/settings", element: <Settings /> },
+      { path: "/account", element: <Account /> },
+    ],
+  },
+
   { path: "/login", element: <Login /> },
   { path: "*", element: <PageNotFound /> },
   {
